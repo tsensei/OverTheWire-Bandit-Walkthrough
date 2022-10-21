@@ -2,8 +2,6 @@
 
 ## Level 0
 
----
-
 **This level requires you to just ssh over the server they provided.**<br>
 The credentials are :
 

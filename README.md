@@ -2,7 +2,8 @@
 
 ## Level 0
 
-**This level requires you to just ssh over the server they provided.**<br>
+**This level requires you to just ssh over the server they provided.**
+
 The credentials are :
 
 <pre>
@@ -25,7 +26,7 @@ The command :
     $ ssh bandit0@bandit.labs.overthewire.org -p 2220
 </pre>
 
-Provide the password, Don't worry if you type and can't see the password or any asteriks. Its just for security purposes. <br>
+Provide the password, Don't worry if you type and can't see the password or any asteriks. Its just for security purposes.
 
 Now that we've logged in, onto the next level !
 
@@ -38,7 +39,8 @@ Now that we've logged in, onto the next level !
     password : bandit0
 </pre>
 
-The root directory has a readme file, which contains the password for the next level.<br>
+**The root directory has a readme file, which contains the password for the next level.**
+
 We can list all the files & directory using this command:
 
 <pre>
@@ -71,9 +73,9 @@ NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL    // This is our password
     password : NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
 </pre>
 
-The root directory has a file containing the password, but interestingly the filename is `-` <br>
+**The root directory has a file containing the password, but interestingly the filename is `-`**
 
-Dashed filename requires some special attention as a preceding dash is commonly used to specify options for command. <br>
+Dashed filename requires some special attention as a preceding dash is commonly used to specify options for command.
 
 Tutorial on dashed filename : [Dashed Filename](https://www.webservertalk.com/dashed-filename)
 
@@ -102,7 +104,8 @@ Then we simply logout and proceed to the next level.
     password : rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
 </pre>
 
-Password for the next level is stored in a file called spaces in this filename located in the home directory <br>
+**Password for the next level is stored in a file called spaces in this filename located in the home directory**
+
 The `~` before the `$` in the prompt indicated we are in the home directory. We can furthur clarify it using `pwd`:
 
 <pre>
@@ -132,3 +135,47 @@ or,
 </pre>
 
 Onto the next level !
+
+## Level 3 -> Level 4
+
+### Logging in
+
+<pre>
+    $ ssh bandit3@bandit.labs.overthewire.org -p 2220
+    password : aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+</pre>
+
+**The password for the next level is stored in a hidden file in the inhere directory.**
+
+We `cd` into the `inhere` directory, but upon furthur listing, we see there aren't any files.
+
+<pre>
+    bandit3@bandit:~$ cd inhere
+    bandit3@bandit:~/inhere$ ls
+    bandit3@bandit:~/inhere$ 
+</pre>
+
+The config files from any program i.e. bash config / git config, they are often kept hidden in linux for security issues. The trick is , using a period `.` before the filename.
+
+Hidden files can very easily be inspected using the `-a` flag with `ls`, that gives us :
+
+<pre>
+    bandit3@bandit:~/inhere$ ls -a
+    .  ..  .hidden
+</pre>
+
+The single and double period are used for path resolution to the current and parent directory. They can be eliminated by replacing `-a` with `-A` .
+
+<pre>
+    bandit3@bandit:~/inhere$ ls -A
+    .hidden
+</pre>
+
+Then we can simple cat the hidden file to retrieve the password.
+
+<pre>
+    bandit3@bandit:~/inhere$ cat .hidden
+    2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+</pre>
+
+Lets proceed!

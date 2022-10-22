@@ -61,3 +61,41 @@ Text files can be inspected using any text editor like more, less, vim, emacs bu
 bandit0@bandit:~$ cat readme
 NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL    // This is our password
 </pre>
+
+## Level 1 -> Level 2
+
+### Logging in
+
+<pre>
+    $ ssh bandit1@bandit.labs.overthewire.org -p 2220
+    password : NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+</pre>
+
+The root directory has a file containing the password, but interestingly the filename is `-` <br>
+
+Dashed filename requires some special attention as a preceding dash is commonly used to specify options for command. <br>
+
+Tutorial on dashed filename : [Dashed Filename](https://www.webservertalk.com/dashed-filename)
+
+For using cat on the dashed file we can use any of the two solutions:
+
+<pre>
+    bandit1@bandit:~$ cat < -
+    rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi    // This is our password
+</pre>
+
+<pre>
+    bandit1@bandit:~$ cat ./-
+    rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi    // This is our password
+</pre>
+
+Then we simply logout and proceed to the next level.
+
+## Level 2 -> Level 3
+
+### Logging in
+
+<pre>
+    $ ssh bandit2@bandit.labs.overthewire.org -p 2220
+    password : rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+</pre>

@@ -84,6 +84,8 @@ For using cat on the dashed file we can use any of the two solutions:
     rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi    // This is our password
 </pre>
 
+or,
+
 <pre>
     bandit1@bandit:~$ cat ./-
     rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi    // This is our password
@@ -99,3 +101,34 @@ Then we simply logout and proceed to the next level.
     $ ssh bandit2@bandit.labs.overthewire.org -p 2220
     password : rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
 </pre>
+
+Password for the next level is stored in a file called spaces in this filename located in the home directory <br>
+The `~` before the `$` in the prompt indicated we are in the home directory. We can furthur clarify it using `pwd`:
+
+<pre>
+    bandit2@bandit:~$ pwd
+    /home/bandit2   // We indeed are in the home directory
+</pre>
+
+Listing using `ls`, we get :
+
+<pre>
+    bandit2@bandit:~$ ls
+    spaces in this filename
+</pre>
+
+We can't just `cat` this file as usual, leaving spaces in between names in bash means each are separate files. We can either escape the spaces using `\` or wrap the filename in quotation marks `""`
+
+<pre>
+    bandit2@bandit:~$ cat spaces\ in\ this\ filename 
+    aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+</pre>
+
+or,
+
+<pre>
+    cat "spaces in this filename" 
+    aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+</pre>
+
+Onto the next level !

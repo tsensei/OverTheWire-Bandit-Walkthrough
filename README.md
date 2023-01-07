@@ -171,7 +171,7 @@ The single and double period are used for path resolution to the current and par
     .hidden
 </pre>
 
-Then we can simple cat the hidden file to retrieve the password.
+Then we can simply `cat` the hidden file to retrieve the password.
 
 <pre>
     bandit3@bandit:~/inhere$ cat .hidden
@@ -179,3 +179,14 @@ Then we can simple cat the hidden file to retrieve the password.
 </pre>
 
 Lets proceed!
+
+## Level 4 -> Level 5
+
+### Logging in
+
+<pre>
+    $ ssh bandit4@bandit.labs.overthewire.org -p 2220
+    password : 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+</pre>
+
+**The password for the next level is stored in the only human-readable file in the inhere directory.**
